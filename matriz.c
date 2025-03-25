@@ -52,7 +52,7 @@ void matriz_multiplica(int** const A, int** const B, int** const C,
 }
 
 
-void matriz_libera(int** A)
+void matriz_libera(int** A, const int N)
 {
 	/* libera toda a memória */
 }

@@ -40,7 +40,7 @@ TEST_CASE("teste inicial 1") {
     int n = 20; 
     int** A = matriz_aloca(n);
     REQUIRE( A != NULL );
-    matriz_libera(A);
+    matriz_libera(A, n);
 }
 
 TEST_CASE("teste inicial 2") {
@@ -50,7 +50,7 @@ TEST_CASE("teste inicial 2") {
     matriz_inicia(A, n);
     REQUIRE( A[0][0] != 0 );
     REQUIRE( A[10][10] != 0 );
-    matriz_libera(A);
+    matriz_libera(A, n);
 }
 
 
@@ -62,12 +62,15 @@ TEST_CASE("teste multiplicacao 1") {
     REQUIRE( A != NULL );
     REQUIRE( B != NULL );
     REQUIRE( C != NULL );
+    matriz_inicia(A, n);
+    matriz_inicia(B, n);
+    matriz_inicia(C, n);
     matriz_multiplica(A, B, C, n);
     REQUIRE( C[0][0] != 0 );
     REQUIRE( C[10][10] != 0 );
-    matriz_libera(A);
-    matriz_libera(B);
-    matriz_libera(C);
+    matriz_libera(A, n);
+    matriz_libera(B, n);
+    matriz_libera(C, n);
 }
 
 
@@ -81,12 +84,16 @@ TEST_CASE("teste multiplicacao 2") {
     REQUIRE( B != NULL );
     REQUIRE( C != NULL );
     REQUIRE( Ccopia != NULL );
+    matriz_inicia(A, n);
+    matriz_inicia(B, n);
+    matriz_inicia(C, n);
+    matriz_inicia(Ccopia, n);
     matriz_copia(Ccopia, C, n);
     REQUIRE( Ccopia[0][0] != 0 );
     matriz_multiplica(A, B, C, n);
     REQUIRE(matriz_compara(C, Ccopia, n) == 0);
-    matriz_libera(A);
-    matriz_libera(B);
-    matriz_libera(C);
-    matriz_libera(Ccopia);
+    matriz_libera(A, n);
+    matriz_libera(B, n);
+    matriz_libera(C, n);
+    matriz_libera(Ccopia, n);
 }

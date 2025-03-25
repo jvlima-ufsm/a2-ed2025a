@@ -31,7 +31,7 @@
 
 int** matriz_aloca(const int N);
 
-void matriz_libera(int** A);
+void matriz_libera(int** A, const int N);
 
 void matriz_multiplica(int** const A, int** const B, int** const C,
         const int N);
